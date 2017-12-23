@@ -13,8 +13,8 @@ namespace _04156258.Controllers
     public class CollectMealsController : Controller
     {
         //private AprilEntities db = new AprilEntities();
-        private masterEntities db = new masterEntities();
-        //private DB15Entities db = new DB15Entities();
+        //private masterEntities db = new masterEntities();
+        private DB15Entities db = new DB15Entities();
         // GET: CollectMeals
         public ActionResult Index(int? id)
         {

@@ -13,8 +13,8 @@ namespace _04156258.Controllers
     public class MealsAndDiscountsController : Controller
     {
         //private AprilEntities db = new AprilEntities();
-        private masterEntities db = new masterEntities();
-        //private DB15Entities db = new DB15Entities();
+        //private masterEntities db = new masterEntities();
+        private DB15Entities db = new DB15Entities();
 
         
         // GET: MealsAndDiscounts
@@ -69,9 +69,9 @@ namespace _04156258.Controllers
             {
                 satisfaction.MemberID = Int32.Parse(Session["MemberID"].ToString());
                 satisfaction.MealsID = Int32.Parse(Session["MID"].ToString());
-                db.Entry(satisfaction).State = EntityState.Modified;
+                db.Satisfaction.Add(satisfaction);
                 db.SaveChanges();
-                return RedirectToAction("Index", "MealsAndDiscounts", sort);
+                return RedirectToAction("Index", "MealsAndDiscounts", new { sort = sort });
             }
             ViewBag.MemberID = new SelectList(db.Member, "MemberID", "MemberAccount", satisfaction.MemberID);
             ViewBag.RestaurantID = new SelectList(db.Restaurant, "RestaurantID", "RestaurantAccount", satisfaction.MealsID);

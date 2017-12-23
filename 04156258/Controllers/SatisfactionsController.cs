@@ -12,16 +12,10 @@ namespace _04156258.Controllers
 {
     public class SatisfactionsController : Controller
     {
-        private masterEntities db = new masterEntities();
-        //private DB15Entities db = new DB15Entities();
-        
-        
+        //private masterEntities db = new masterEntities();
+        private DB15Entities db = new DB15Entities();
 
-
-
-
-
-            public ActionResult Index()
+        public ActionResult Index()
         {
             var satisfaction = db.Satisfaction.Include(s => s.Member).Include(s => s.MealsID);
             return View(satisfaction.ToList());

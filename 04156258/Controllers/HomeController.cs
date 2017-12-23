@@ -14,8 +14,8 @@ namespace _04156258.Controllers
     public class HomeController : Controller
     {
         //private AprilEntities DB = new AprilEntities();
-        private masterEntities DB = new masterEntities();
-        //private DB15Entities DB = new DB15Entities();
+        //private masterEntities DB = new masterEntities();
+        private DB15Entities DB = new DB15Entities();
 
         [AllowAnonymous]
         public ActionResult Index()
