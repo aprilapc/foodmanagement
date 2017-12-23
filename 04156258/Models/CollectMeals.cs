@@ -15,7 +15,7 @@ namespace _04156258.Models
     public partial class CollectMeals
     {
         public int CollectMealsID { get; set; }
-        public Nullable<System.DateTime> CollectTime { get; set; }
+        public System.DateTime CollectTime { get; set; }
         public int MealsID { get; set; }
         public int MemberID { get; set; }
     

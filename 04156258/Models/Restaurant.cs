@@ -18,7 +18,6 @@ namespace _04156258.Models
         public Restaurant()
         {
             this.MealsAndDiscount = new HashSet<MealsAndDiscount>();
-            this.Satisfaction = new HashSet<Satisfaction>();
         }
     
         public int RestaurantID { get; set; }
@@ -31,7 +30,5 @@ namespace _04156258.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MealsAndDiscount> MealsAndDiscount { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Satisfaction> Satisfaction { get; set; }
     }
 }

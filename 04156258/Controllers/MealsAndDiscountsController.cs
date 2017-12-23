@@ -65,17 +65,39 @@ namespace _04156258.Controllers
             ViewBag.ID = Int32.Parse(Session["MemberID"].ToString());
             ViewBag.Name = Session["MemberName"];
             string sort = Session["sort"].ToString();
+            ViewBag.Sort = sort;
             if (ModelState.IsValid)
             {
                 satisfaction.MemberID = Int32.Parse(Session["MemberID"].ToString());
                 satisfaction.MealsID = Int32.Parse(Session["MID"].ToString());
                 db.Satisfaction.Add(satisfaction);
                 db.SaveChanges();
-                return RedirectToAction("Index", "MealsAndDiscounts", new { sort = sort });
+                TempData["successful"] = "<script>alert('感謝您提供餐點評價');</script>";
+                return RedirectToAction("Index", new { sort = sort });
             }
             ViewBag.MemberID = new SelectList(db.Member, "MemberID", "MemberAccount", satisfaction.MemberID);
             ViewBag.RestaurantID = new SelectList(db.Restaurant, "RestaurantID", "RestaurantAccount", satisfaction.MealsID);
             return View(satisfaction);
+        }
+        public ActionResult AllFeedback(int? id)
+        {
+            ViewBag.ID = Int32.Parse(Session["MemberID"].ToString());
+            ViewBag.Name = Session["MemberName"];
+            ViewBag.FBid = id;
+            ViewBag.Sort = Session["sort"].ToString();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var mealsfeedback = new List<Satisfaction>();
+            foreach (var item in db.Satisfaction)
+            {
+                if (item.MealsID.Equals(id))
+                {
+                    mealsfeedback.Add(item);
+                }
+            }
+            return View(mealsfeedback);
         }
         //public ActionResult Index()
         //{

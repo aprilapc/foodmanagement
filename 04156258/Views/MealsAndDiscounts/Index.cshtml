@@ -2,7 +2,7 @@
 @{
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
-
+@Html.Raw(TempData["successful"])
 <table class="table">
     <tr>
         <th>
@@ -51,6 +51,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Restaurant.RestaurantOpentime)
+        </td>
+        <td>
+            @Html.ActionLink("查看評價", "Feedback", new { id = item.MealsID })
         </td>
         <td>
             @Html.ActionLink("給評價", "Feedback", new { id = item.MealsID })

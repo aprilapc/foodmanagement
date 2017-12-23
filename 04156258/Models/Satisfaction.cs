@@ -20,7 +20,7 @@ namespace _04156258.Models
         public int MealsID { get; set; }
         public int MemberID { get; set; }
     
+        public virtual MealsAndDiscount MealsAndDiscount { get; set; }
         public virtual Member Member { get; set; }
-        public virtual Restaurant Restaurant { get; set; }
     }
 }

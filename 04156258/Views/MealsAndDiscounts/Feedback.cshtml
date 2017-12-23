@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
     string sort = ViewBag.Sort;
 }
-
+@Html.Raw(TempData["successful"])
 <h2>Feedback</h2>
 
 @using (Html.BeginForm())
@@ -42,6 +42,6 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index","MealsAndDiscounts",sort,"")
+    @Html.ActionLink("Back to List", "Index","MealsAndDiscounts",new { sort = sort })
 </div>
 
