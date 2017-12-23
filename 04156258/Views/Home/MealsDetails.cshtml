@@ -1,0 +1,58 @@
+﻿@model _04156258.Models.MealsAndDiscount
+@{
+    Layout = "~/Views/Shared/_RestaurantLoginLayout.cshtml";
+    int id = Model.RestaurantID;
+}
+
+<h2>MealsDetails</h2>
+
+<div>
+    <h4>MealsAndDiscount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MealsName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MealsName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MealsPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MealsPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MealsSort)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MealsSort)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MealsDiscount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MealsDiscount)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Restaurant.RestaurantAccount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Restaurant.RestaurantAccount)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "MealsEdit", new { id = Model.MealsID }) |
+    @Html.ActionLink("Back to List", "RestaurantLoginIndex",new { id =id})
+</p>

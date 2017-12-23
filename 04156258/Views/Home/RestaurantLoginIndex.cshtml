@@ -1,0 +1,55 @@
+﻿@using _04156258.Models
+@model IEnumerable<MealsAndDiscount>
+@{
+    ViewBag.Title = "RestaurantLoginIndex";
+    Layout = "~/Views/Shared/_RestaurantLoginLayout.cshtml";
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MealsName )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MealsPrice )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MealsSort )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MealsDiscount )
+        </th>
+        
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MealsName )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MealsPrice )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MealsSort )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MealsDiscount )
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "MealsEdit", new { id=item.MealsID }) |
+                @Html.ActionLink("Details", "MealsDetails", new { id=item.MealsID }) |
+                @Html.ActionLink("Delete", "MealsDelete", new { id=item.MealsID }) |
+                @Html.ActionLink("Meals Feedback","MealsFeedback", new{id = item.MealsID })
+                </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Create New", "MealsCreate")
+</p>
+

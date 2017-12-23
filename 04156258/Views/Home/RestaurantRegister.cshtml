@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "RestaurantRegister";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using _04156258.Models
+@model Restaurant
+@Html.Raw(TempData["exist"])
+@Html.Raw(TempData["null"])
+<h2>Register</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.RestaurantAccount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.RestaurantAccount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.RestaurantAccount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.RestaurantPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.RestaurantPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.RestaurantPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.RestaurantName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.RestaurantName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.RestaurantName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.RestaurantPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.RestaurantPhone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.RestaurantPhone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.RestaurantAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.RestaurantAddress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.RestaurantAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.RestaurantOpentime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.RestaurantOpentime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.RestaurantOpentime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Register" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+
+}

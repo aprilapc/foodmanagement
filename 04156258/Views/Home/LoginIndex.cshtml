@@ -1,0 +1,32 @@
+﻿@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/bootstrap")
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    int id = ViewBag.ID;
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        function get() {
+            var sort = document.getElementById("sort").value;
+            location.href = '@Url.Content("~/MealsAndDiscounts/Index?sort=")' + sort;
+        }
+    </script>
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>推薦餐點</h2>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.DropDownList("sort", (SelectList)ViewBag.sort)
+                <input id="sort" type="button" class="btn btn-default" onclick="get()" value="推薦"/>
+</div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h2>@Html.ActionLink("收藏餐點", "Index", "CollectMeals", new { id = id }, new { })</h2>
+        <p>點此可查看收藏餐點</p>
+    </div>
+</div>
+

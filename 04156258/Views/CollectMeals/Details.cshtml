@@ -1,0 +1,42 @@
+﻿@model _04156258.Models.CollectMeals
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CollectMeals</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CollectTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CollectTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MealsAndDiscount.MealsName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MealsAndDiscount.MealsName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.MemberAccount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member.MemberAccount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CollectMealsID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

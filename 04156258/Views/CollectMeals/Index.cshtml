@@ -1,0 +1,62 @@
+﻿@using _04156258.Models
+@model IEnumerable<CollectMeals>
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<h2>收藏餐點</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CollectTime )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MealsAndDiscount.MealsName )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MealsAndDiscount.MealsPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MealsAndDiscount.MealsSort)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MealsAndDiscount.MealsDiscount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MealsAndDiscount.Restaurant.RestaurantName )
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CollectTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MealsAndDiscount.MealsName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MealsAndDiscount.MealsPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MealsAndDiscount.MealsSort)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MealsAndDiscount.MealsDiscount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MealsAndDiscount.Restaurant.RestaurantName)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CollectMealsID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CollectMealsID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CollectMealsID })
+        </td>*@
+    </tr>
+}
+
+</table>

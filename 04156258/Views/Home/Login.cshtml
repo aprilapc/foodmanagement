@@ -1,0 +1,39 @@
+﻿@using _04156258.Models
+@model Member
+    <h2>Login</h2>
+@Html.Raw(TempData["exist"])
+@Html.Raw(TempData["null"])
+<div class="row">
+    <div class="col-md-8">
+            @using (Html.BeginForm("Login", "Home"))
+            {
+                @Html.AntiForgeryToken()
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MemberAccount, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.MemberAccount, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.MemberAccount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MemberPassword, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.MemberPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.MemberPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Login" class="btn btn-default" />
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("註冊", "Register")
+                </p>
+            }
+        
+    </div>
+    
+</div>

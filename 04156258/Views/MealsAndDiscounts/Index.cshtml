@@ -1,0 +1,61 @@
+﻿@model IEnumerable<_04156258.Models.MealsAndDiscount>
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MealsName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MealsPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MealsDiscount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Restaurant.RestaurantName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Restaurant.RestaurantPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Restaurant.RestaurantAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Restaurant.RestaurantOpentime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MealsName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MealsPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MealsDiscount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Restaurant.RestaurantName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Restaurant.RestaurantPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Restaurant.RestaurantAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Restaurant.RestaurantOpentime)
+        </td>
+        <td>
+            @Html.ActionLink("給評價", "Feedback", new { id = item.MealsID })
+        </td>
+    </tr>
+}
+
+</table>

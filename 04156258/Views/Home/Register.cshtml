@@ -1,0 +1,54 @@
+﻿@using _04156258.Models
+@model Member
+@Html.Raw(TempData["exist"])
+@Html.Raw(TempData["null"])
+<h2>Register</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr/>
+        @Html.ValidationSummary(true, "", new { @class="text-danger"})
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.MemberAccount,htmlAttributes: new {@class="control-label col-md-2"} )
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.MemberAccount, new {htmlAttributes = new {@class="form-control"}} )
+                @Html.ValidationMessageFor(m => m.MemberAccount, "",new {@class="text-danger"} )
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.MemberPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.MemberPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.MemberPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.MemberName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.MemberName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.MemberName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.MemberEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.MemberEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.MemberEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Register" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+
+}

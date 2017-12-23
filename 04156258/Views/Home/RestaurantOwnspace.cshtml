@@ -1,0 +1,53 @@
+﻿@using _04156258.Models
+@model Restaurant
+@{
+    ViewBag.Title = "RestaurantOwnspace";
+    Layout = "~/Views/Shared/_RestaurantLoginLayout.cshtml";
+}
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(m => m.RestaurantName )
+        </dt>
+        <dd>
+            @Html.DisplayFor(m => m.RestaurantName )
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(m => m.RestaurantAccount )
+        </dt>
+        <dd>
+            @Html.DisplayFor(m => m.RestaurantAccount )
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(m => m.RestaurantPassword )
+        </dt>
+        <dd>
+            @Html.DisplayFor(m => m.RestaurantPassword )
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(m => m.RestaurantPhone )
+        </dt>
+        <dd>
+            @Html.DisplayFor(m => m.RestaurantPhone )
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(m => m.RestaurantAddress )
+        </dt>
+        <dd>
+            @Html.DisplayFor(m => m.RestaurantAddress )
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(m => m.RestaurantOpentime )
+        </dt>
+        <dd>
+            @Html.DisplayFor(m => m.RestaurantOpentime)
+        </dd>
+
+
+    </dl>
+</div>
+
