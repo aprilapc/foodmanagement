@@ -804,3 +804,4 @@ C:\Users\Administrator\Desktop\04156258-20171220\04156258\bin\zh-Hant\Microsoft.
 C:\Users\Administrator\Desktop\04156258-20171220\04156258\bin\zh-Hant\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 C:\Users\Administrator\Desktop\04156258-20171220\04156258\obj\Debug\04156258.dll
 C:\Users\Administrator\Desktop\04156258-20171220\04156258\obj\Debug\04156258.pdb
+C:\Users\Administrator\Desktop\04156258-20171220\04156258\obj\Debug\04156258.csprojResolveAssemblyReference.cache

@@ -53,7 +53,7 @@
             @Html.DisplayFor(modelItem => item.Restaurant.RestaurantOpentime)
         </td>
         <td>
-            @Html.ActionLink("查看評價", "Feedback", new { id = item.MealsID })
+            @Html.ActionLink("查看評價", "AllFeedback", new { id = item.MealsID })
         </td>
         <td>
             @Html.ActionLink("給評價", "Feedback", new { id = item.MealsID })

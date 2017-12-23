@@ -73,7 +73,7 @@ namespace _04156258.Controllers
                 db.Satisfaction.Add(satisfaction);
                 db.SaveChanges();
                 TempData["successful"] = "<script>alert('感謝您提供餐點評價');</script>";
-                return RedirectToAction("Index", new { sort = sort });
+                return RedirectToAction("AllFeedback", new { id = satisfaction.MealsID });
             }
             ViewBag.MemberID = new SelectList(db.Member, "MemberID", "MemberAccount", satisfaction.MemberID);
             ViewBag.RestaurantID = new SelectList(db.Restaurant, "RestaurantID", "RestaurantAccount", satisfaction.MealsID);

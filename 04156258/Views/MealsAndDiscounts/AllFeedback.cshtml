@@ -4,7 +4,7 @@
     int id = ViewBag.FBid;
     string sort = ViewBag.Sort;
 }
-
+@Html.Raw(TempData["successful"])
 <table class="table">
     <tr>
         <th>
@@ -43,6 +43,6 @@
     
 </table>
 <p>
-    @Html.ActionLink("給評價", "Feedback", new { id = id }) | @Html.ActionLink("Back to List", "Index", "MealsAndDiscounts", new { sort = sort })
+    @Html.ActionLink("給評價", "Feedback", new { id = id }) | @Html.ActionLink("Back to List", "Index", new { sort = sort })
 </p>
 
