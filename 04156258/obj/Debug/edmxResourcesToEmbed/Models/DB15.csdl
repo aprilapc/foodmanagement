@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB15Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CollectMeals">
+    <Key>
+      <PropertyRef Name="CollectMealsID" />
+    </Key>
+    <Property Name="CollectMealsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CollectTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MealsID" Type="Int32" Nullable="false" />
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MealsAndDiscount" Relationship="Self.FK_CollectMeals_MealsAndDiscount" FromRole="CollectMeals" ToRole="MealsAndDiscount" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_CollectMeals_Member" FromRole="CollectMeals" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="MealsAndDiscount">
+    <Key>
+      <PropertyRef Name="MealsID" />
+    </Key>
+    <Property Name="MealsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MealsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MealsPrice" Type="Int32" Nullable="false" />
+    <Property Name="MealsSort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MealsDiscount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CollectMeals" Relationship="Self.FK_CollectMeals_MealsAndDiscount" FromRole="MealsAndDiscount" ToRole="CollectMeals" />
+    <NavigationProperty Name="Restaurant" Relationship="Self.FK_MealsAndDiscount_Restaurant" FromRole="MealsAndDiscount" ToRole="Restaurant" />
+    <NavigationProperty Name="Satisfaction" Relationship="Self.FK_Satisfaction_MealsAndDiscount" FromRole="MealsAndDiscount" ToRole="Satisfaction" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MemberPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MemberEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CollectMeals" Relationship="Self.FK_CollectMeals_Member" FromRole="Member" ToRole="CollectMeals" />
+    <NavigationProperty Name="Satisfaction" Relationship="Self.FK_Satisfaction_Member" FromRole="Member" ToRole="Satisfaction" />
+  </EntityType>
+  <EntityType Name="Restaurant">
+    <Key>
+      <PropertyRef Name="RestaurantID" />
+    </Key>
+    <Property Name="RestaurantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RestaurantPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RestaurantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RestaurantPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RestaurantAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RestaurantOpentime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MealsAndDiscount" Relationship="Self.FK_MealsAndDiscount_Restaurant" FromRole="Restaurant" ToRole="MealsAndDiscount" />
+  </EntityType>
+  <EntityType Name="Satisfaction">
+    <Key>
+      <PropertyRef Name="FeedbackID" />
+    </Key>
+    <Property Name="FeedbackID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MessageContent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Score" Type="Int32" Nullable="false" />
+    <Property Name="MealsID" Type="Int32" Nullable="false" />
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MealsAndDiscount" Relationship="Self.FK_Satisfaction_MealsAndDiscount" FromRole="Satisfaction" ToRole="MealsAndDiscount" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Satisfaction_Member" FromRole="Satisfaction" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_CollectMeals_MealsAndDiscount">
+    <End Role="MealsAndDiscount" Type="Self.MealsAndDiscount" Multiplicity="1" />
+    <End Role="CollectMeals" Type="Self.CollectMeals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MealsAndDiscount">
+        <PropertyRef Name="MealsID" />
+      </Principal>
+      <Dependent Role="CollectMeals">
+        <PropertyRef Name="MealsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CollectMeals_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="CollectMeals" Type="Self.CollectMeals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="CollectMeals">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MealsAndDiscount_Restaurant">
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="1" />
+    <End Role="MealsAndDiscount" Type="Self.MealsAndDiscount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="RestaurantID" />
+      </Principal>
+      <Dependent Role="MealsAndDiscount">
+        <PropertyRef Name="RestaurantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Satisfaction_MealsAndDiscount">
+    <End Role="MealsAndDiscount" Type="Self.MealsAndDiscount" Multiplicity="1" />
+    <End Role="Satisfaction" Type="Self.Satisfaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MealsAndDiscount">
+        <PropertyRef Name="MealsID" />
+      </Principal>
+      <Dependent Role="Satisfaction">
+        <PropertyRef Name="MealsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Satisfaction_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="Satisfaction" Type="Self.Satisfaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="Satisfaction">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB15Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CollectMeals" EntityType="Self.CollectMeals" />
+    <EntitySet Name="MealsAndDiscount" EntityType="Self.MealsAndDiscount" />
+    <EntitySet Name="Member" EntityType="Self.Member" />
+    <EntitySet Name="Restaurant" EntityType="Self.Restaurant" />
+    <EntitySet Name="Satisfaction" EntityType="Self.Satisfaction" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_CollectMeals_MealsAndDiscount" Association="Self.FK_CollectMeals_MealsAndDiscount">
+      <End Role="MealsAndDiscount" EntitySet="MealsAndDiscount" />
+      <End Role="CollectMeals" EntitySet="CollectMeals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CollectMeals_Member" Association="Self.FK_CollectMeals_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="CollectMeals" EntitySet="CollectMeals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MealsAndDiscount_Restaurant" Association="Self.FK_MealsAndDiscount_Restaurant">
+      <End Role="Restaurant" EntitySet="Restaurant" />
+      <End Role="MealsAndDiscount" EntitySet="MealsAndDiscount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Satisfaction_MealsAndDiscount" Association="Self.FK_Satisfaction_MealsAndDiscount">
+      <End Role="MealsAndDiscount" EntitySet="MealsAndDiscount" />
+      <End Role="Satisfaction" EntitySet="Satisfaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Satisfaction_Member" Association="Self.FK_Satisfaction_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Satisfaction" EntitySet="Satisfaction" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
