@@ -33,7 +33,7 @@ namespace _04156258.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
+            //1224
             return View();
         }
         [AllowAnonymous]
