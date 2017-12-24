@@ -99,6 +99,11 @@ namespace _04156258.Controllers
             }
             return View(mealsfeedback);
         }
+        public ActionResult Remind()
+        {
+            //
+            return View();
+        }
         //public ActionResult Index()
         //{
         //    ViewBag.ID = Int32.Parse(Session["MemberID"].ToString());
