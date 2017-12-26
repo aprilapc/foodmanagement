@@ -12,12 +12,8 @@ namespace _04156258.Controllers
 {
     public class MealsAndDiscountsController : Controller
     {
-        //private AprilEntities db = new AprilEntities();
-        //private masterEntities db = new masterEntities();
         private DB15Entities db = new DB15Entities();
-
-        
-        // GET: MealsAndDiscounts
+        //
         public ActionResult Index(string sort)
         {
             ViewBag.ID = Int32.Parse(Session["MemberID"].ToString());
@@ -101,7 +97,14 @@ namespace _04156258.Controllers
         }
         public ActionResult Remind()
         {
-            //
+            List < MealsAndDiscountsController > mealsanddiscounts;
+            int id = 1;
+            foreach (var item in db.meals)
+            {
+                mealsanddiscounts = db.MealsAndDiscounts.Select(m => m.MealsID == id).ToList();
+            }
+            int count = mealsanddiscounts.Count();
+            ViewBag.Count = count;
             return View();
         }
         //public ActionResult Index()
